@@ -1,0 +1,15 @@
+services:
+  mysql:
+    image: mysql:8.0  # Change from mysql:9.2 to mysql:8.0
+    container_name: appointment-mysql-container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: appointment_service
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./docker/mysql_data:/var/lib/mysql
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql

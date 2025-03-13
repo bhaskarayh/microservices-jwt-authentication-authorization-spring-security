@@ -1,0 +1,19 @@
+package com.devzees.auth.services;
+
+import com.devzees.auth.repositories.UserRepository;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.stereotype.Component;
+
+@Slf4j
+@Component
+public class UserDetailsServiceImpl implements UserDetailsService {
+    @Autowired
+    private UserRepository userRepository;
+
+    @Override
+    public UserDetailsImpl loadUserByUsername(String username) {
+        return new UserDetailsImpl(userRepository.findByUsername(username));
+    }
+}

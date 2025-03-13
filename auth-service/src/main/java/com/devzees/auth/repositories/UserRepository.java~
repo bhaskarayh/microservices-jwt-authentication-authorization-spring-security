@@ -1,0 +1,6 @@
+package com.devzees.auth.repositories;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+    User findByUsername(String username);
+}
