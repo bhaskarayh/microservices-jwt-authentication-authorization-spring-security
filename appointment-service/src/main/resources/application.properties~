@@ -12,5 +12,3 @@ server.port=9090
 
 # Eureka settings (if using Spring Cloud)
 eureka.client.service-url.defaultZone=http://localhost:9092/eureka/
-# Use localhost instead of IP address
-eureka.instance.hostname=localhost

@@ -18,6 +18,11 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public String createUser(User user) {
+        // Check if user exist
+        if (userRepository.findByUsername(user.getUsername()) != null) {
+            throw new RuntimeException("User already exist.");
+        }
+
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return "User has been created successfully.";
