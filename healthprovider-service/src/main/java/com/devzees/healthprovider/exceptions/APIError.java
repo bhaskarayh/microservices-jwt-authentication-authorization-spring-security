@@ -24,4 +24,3 @@ public class APIError {
     private LocalDateTime timestamp;  // ✅ Change "timeStamp" to "timestamp"
     private String path;               // ✅ Change "pathUri" to "path"
 }
-

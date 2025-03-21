@@ -3,7 +3,7 @@ services:
   mysql:
     container_name: user-mysql-container
     image: mysql:8.0  # Change from mysql:9.2 to mysql:8.0
-#    restart: always
+    restart: always
     volumes:
       - ./docker/mysql_data:/var/lib/mysql
       - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql

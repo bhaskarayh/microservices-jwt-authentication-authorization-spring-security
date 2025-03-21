@@ -1,0 +1,39 @@
+package com.devzees.auth.controllers;
+
+import com.devzees.auth.dtos.AuthRequestDTO;
+import com.devzees.auth.dtos.JwtResponseDTO;
+import com.devzees.auth.models.User;
+import com.devzees.auth.services.AuthService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/api/v1/users")
+public class AuthController {
+    private final AuthService authService;
+    private final AuthenticationManager authenticationManager;
+
+    @PostMapping("/signup")
+    public ResponseEntity<String> createUser(@RequestBody User user) {
+        try {
+            return ResponseEntity.ok(authService.createUser(user));
+        } catch (Exception ex) {
+            throw new RuntimeException(ex.getMessage());
+        }
+    }
+
+    @PostMapping("/generateToken")
+    public ResponseEntity<JwtResponseDTO> generateToken(@RequestBody AuthRequestDTO authRequestDTO) {
+        try {
+            return ResponseEntity.ok(authService.generateToken(user.getUsername()));
+        } catch (Exception ex) {
+            throw new RuntimeException(ex.getMessage());
+        }
+    }
+}
